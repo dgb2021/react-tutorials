@@ -5,51 +5,40 @@ import ReactDom from 'react-dom'
 import './index.css'
 
 //setup variables
-const firstBook = {
-  img: 'https://m.media-amazon.com/images/I/51B1gVTuEdS.jpg',
-  title: 'The Thursday Murder Club',
-  author: 'Richard Osman',
-}
-
-const secondBook = {
-  img: 'https://m.media-amazon.com/images/I/51xuV3QtrSL.jpg',
-  title: 'The Family Upstairs',
-  author: 'Lisa Jewell',
-}
+const books = [
+  {
+    img: 'https://m.media-amazon.com/images/I/51B1gVTuEdS.jpg',
+    title: 'The Thursday Murder Club',
+    author: 'Richard Osman',
+  },
+  {
+    img: 'https://m.media-amazon.com/images/I/51xuV3QtrSL.jpg',
+    title: 'The Family Upstairs',
+    author: 'Lisa Jewell',
+  },
+  {
+    img: 'https://images-eu.ssl-images-amazon.com/images/I/511nW6vSBhS.jpg',
+    title: 'The Midnight Library',
+    author: 'Matt Haig',
+  },
+]
 
 function BookList() {
   return (
     <section className='booklist'>
-      <Book
-        img={firstBook.img}
-        title={firstBook.title}
-        author={firstBook.author}
-      >
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, ipsa
-          velit. Sit corrupti mollitia soluta deleniti dolore, beatae sunt
-          voluptate.
-        </p>
-      </Book>
-      <Book
-        img={secondBook.img}
-        title={secondBook.title}
-        author={secondBook.author}
-      />
-      <Book />
-      <Book />
-      <Book />
+      {books.map((book) => {
+        return <Book book={book}></Book>
+      })}
     </section>
   )
 }
 const Book = (props) => {
-  const { img, title, author, children } = props
+  const { img, title, author } = props.book
   return (
     <article className='book'>
       <img src={img} alt='' />
       <h1>{title}</h1>
       <h4>{author}</h4>
-      {children}
     </article>
   )
 }
